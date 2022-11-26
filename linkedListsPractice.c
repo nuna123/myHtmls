@@ -103,20 +103,16 @@ int remove_item_linked_func(t_Node **node_list, char *comparable_val, int (cmp_f
 
 	while (this_node)
 	{
-		if((cmp_func)(this_node->str_val, comparable_val) == 0)//if are the same
+		if((cmp_func) (this_node->str_val, comparable_val) == 0)//if are the same
 		{
 			node_to_free = this_node;
 			//if is the 1st item
-			if (!prev_node){
+			if (!prev_node)
 				*node_list = this_node->next_node;
-				}
 			else
-			{
 				prev_node->next_node = this_node->next_node;
-			}
 
 			this_node = this_node->next_node;
-
 			free(node_to_free->str_val);
 			free(node_to_free);
 			}
@@ -147,8 +143,10 @@ int main(void)
 
 	printf("populmate_list_ptop returned:\t%i\n",populate_list_ptop(&node_list, str_arr, (int) sizeof(str_arr) / sizeof(char *)));
 	printf("display_list returned:\t%i\n", display_list(node_list));
-	printf("remove_item_if_matches returned:\t%i\n", remove_item_if_matches(&node_list, "one"));
-	printf("remove_item_linked_func returned:\t%i\n", remove_item_linked_func(&node_list, "four", strcmp));
+	
+	//printf("remove_item_if_matches returned:\t%i\n", remove_item_if_matches(&node_list, "one"));
+	
+	printf("remove_item_linked_func returned:\t%i\n", remove_item_linked_func(&node_list, "one", strcmp));
 
 	printf("display_list returned:\t%i\n", display_list(node_list));
 
